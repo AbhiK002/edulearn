@@ -41,7 +41,7 @@ header {
 }
 
 .brand-div h1 {
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 @media (max-width: 450px) {
@@ -66,6 +66,18 @@ header nav {
 }
 .nav-toggle {
   display: none;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  justify-content: center;
+  align-items: center;
+}
+.nav-toggle .line {
+  display: block;
+  height: 4px;
+  width: 28px;
+  border-radius: 12px;
+  background-color: white;
 }
 .nav-buttons {
   display: flex;

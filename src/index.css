@@ -81,7 +81,7 @@ button.large {
 button.secondary {
   --button-bg: var(--secondary);
   --button-fg: var(--text);
-  --button-hover: var(--secondary-dark)
+  --button-hover: var(--secondary-dark);
 }
 
 button.critical {
@@ -91,6 +91,7 @@ button.critical {
 
 button.outline {
   background-color: transparent;
+  font-weight: bold;
   --button-bd-width: 2px;
   --button-bd-color: var(--button-bg);
   --button-fg: var(--button-bd-color);  

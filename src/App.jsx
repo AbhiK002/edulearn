@@ -31,7 +31,7 @@ function NavBar(props) {
     <header>
       <div className="brand-div" onClick={() => navigate(config.homePage)} tabIndex={1}>
         <img src={"/logo.png"} alt="Logo" className="logo-img" width={64} />
-        <h1>BrandName</h1>
+        <h1>EduLearn</h1>
       </div>
       <nav className={navVisible ? 'visible' : ''}>
         <button className='close-nav critical' onClick={toggleNav}>X</button>
@@ -42,13 +42,13 @@ function NavBar(props) {
         {/* <span className={`nav-link ${isLinkActive(config.contactPage) ? 'active' : ''}`} onClick={() => navigate(config.contactPage)} tabIndex={1}>Contact</span> */}
       </nav>
       <span className='nav-buttons'>
-        <button className="nav-toggle" onClick={toggleNav}>
-          ☰
+        <button type='button' className="nav-toggle" onClick={toggleNav}>
+          <span className="line"></span><span className="line"></span><span className="line"></span>
         </button>
         {
           isLoggedIn ?
-          <button className="profile" onClick={() => {navigate(config.profilePage)}}>{userDetails.fullname.split(" ")[0]}</button> :
-          <button className="sign-up critical" onClick={() => navigate(config.getStartedPage)}>Log In</button>
+          <button type='button' className="profile outline" onClick={() => {navigate(config.profilePage)}}>{userDetails.fullname.split(" ")[0]}</button> :
+          <button type='button' className="sign-up critical" onClick={() => navigate(config.getStartedPage)}>Log In</button>
         }
       </span>
     </header>
@@ -74,10 +74,10 @@ function App() {
         setCourses(list);
       }
       else {
-        alert("error retrieving courses")
+        console.error("error retrieving courses")
       }
     }).catch(err => {
-      alert("error retrieving courses")
+      console.error("error retrieving courses")
     })
   }, [refreshCourses])
   
