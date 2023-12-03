@@ -1,0 +1,113 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+
+  color-scheme: light;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  font-size: 16px;
+
+  --text: rgb(12, 4, 3);
+  --text-light: rgb(247, 247, 247);
+  --background: rgb(254, 251, 251);
+
+  --primary-col: 21, 69, 173;
+  --primary: rgb(21, 69, 173);
+  --primary-light: rgb(53, 102, 210);
+  --primary-dark: rgb(17, 55, 136);
+
+  --secondary-col: 194, 215, 255;
+  --secondary: rgb(194, 215, 255);
+  --secondary-light: rgb(218, 231, 255);
+  --secondary-dark: rgb(162, 195, 255);
+
+  --accent-col: 186, 80, 126;
+  --accent: rgb(186, 80, 126);
+  --accent-light: rgb(213, 77, 136);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  min-height: 100vh;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--background);
+}
+
+h1,h2,h3,h4,h5,h6,p {
+  margin: 0;
+}
+
+button {
+  --button-bg: var(--primary);
+  --button-hover: var(--primary-light);
+  --button-fg: var(--text-light);
+  --button-bd-width: 0px;
+  --button-bd-color: transparent;
+
+  background-color: var(--button-bg);
+  color: var(--button-fg);
+
+  padding: 12px 24px;
+  width: fit-content;
+  border: 2px solid var(--button-bg);
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 200ms;
+}
+button:hover {
+  background-color: var(--button-hover);
+}
+
+button.large {
+  font-size: 1.4rem;
+  padding: 16px 32px
+}
+
+button.secondary {
+  --button-bg: var(--secondary);
+  --button-fg: var(--text);
+  --button-hover: var(--secondary-dark)
+}
+
+button.critical {
+  --button-bg: var(--accent);
+  --button-hover: var(--accent-light);
+}
+
+button.outline {
+  background-color: transparent;
+  --button-bd-width: 2px;
+  --button-bd-color: var(--button-bg);
+  --button-fg: var(--button-bd-color);  
+  border: var(--button-bd-width) solid var(--button-bd-color);
+}
+
+label {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 1.2rem;
+}
+input, textarea {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  padding: 0.6rem 1rem;
+  font-size: 1.4rem;
+  border-radius: 8px;
+  border: 2px solid rgba(0,0,0, 0.4);
+}
+input:focus {
+  outline-color: var(--primary);
+}
