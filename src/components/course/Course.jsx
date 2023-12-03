@@ -88,7 +88,7 @@ function Course({ refreshApp, userDetails, setUserDetails }) {
     }
     // on page Load , we are adding script.
     useEffect(() => {
-        loadscript("http://checkout.razorpay.com/v1/checkout.js")
+        loadscript("https://checkout.razorpay.com/v1/checkout.js")
     }, [])
 
     function displayRazor() {
