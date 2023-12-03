@@ -44,6 +44,12 @@ header {
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+@media (max-width: 450px) {
+  .brand-div h1 {
+    display: none;
+  }
+}
+
 .brand-div h1:hover {
   color: var(--primary)
 }
