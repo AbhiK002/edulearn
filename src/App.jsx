@@ -86,7 +86,7 @@ function App() {
     const checkTokenValidity = () => {
       if (token) {
         axios.post(
-            config.getBackendUrl("/autologin"),
+            config.getBackendUrl("/autologin-edlearn"),
             {},
             {
               headers: {

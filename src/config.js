@@ -1,12 +1,12 @@
 const prefix = ""
 const configs = {
-    getBackendUrl: (suffix) => {return "http://localhost:3000" + suffix},
+    getBackendUrl: (suffix) => {return "https://master-forky.up.railway.app" + suffix},
     sampleUserDetails: {
         _id: "h9h38hd92hn3d92",
         fullname: "Abhineet Kelley",
         email: "abhi@kelley.com",
         password: "ihbieuwhfouoiwe",
-        role: "admin",
+        role: "student",
         courses_bought: ["h9f28hf9203", "h29f83hfioh2", "huhdui3hodi"]
     },
     sampleCourseDetails: {

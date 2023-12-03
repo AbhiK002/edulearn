@@ -38,7 +38,7 @@ function GetStarted(props) {
     }
 
     function login() {
-        axios.post(configs.getBackendUrl("/login"), {
+        axios.post(configs.getBackendUrl("/login-edlearn"), {
             email: loginFormData.email,
             password: loginFormData.password
         })
@@ -57,7 +57,7 @@ function GetStarted(props) {
         })
     }
     function register() {
-        axios.post(configs.getBackendUrl("/register"), {
+        axios.post(configs.getBackendUrl("/register-edlearn"), {
             fullname: loginFormData.fullname,
             email: loginFormData.email,
             password: loginFormData.password
