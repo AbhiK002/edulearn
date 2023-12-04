@@ -13,7 +13,7 @@ function Courses({courses}) {
         let c = document.getElementsByClassName('cleartext-button')[0];
         setTimeout(() => {
             if (i.value.length > 0) {
-                let filteredCourses = coursesView.filter(course => {
+                let filteredCourses = courses.filter(course => {
                     return course.title.toLowerCase().includes(i.value.toLowerCase());
                 })
                 setCoursesView([...filteredCourses]);
@@ -39,7 +39,7 @@ function Courses({courses}) {
     return <div className='courses-main'>
         <section className="course-nav">
             <h1>Our Courses</h1>
-            <div className="search-bar" onKeyDown={iconEffect}>
+            <div className="search-bar" onChange={iconEffect}>
                 <div className="search-icon"></div>
                 <input id="search" type="text" placeholder="Search courses" name="search" />
                 <div className="cleartext-button" onMouseDown={clearText}>

@@ -107,7 +107,7 @@ function Home(props) {
             </div>
         </section>
         <section className="section about">
-            <img src="/abt.webp" width={200} class="about-photo" alt="About Photo" />
+            <img src="/abt.webp" width={200} className="about-photo" alt="About Photo" />
             <div className="about-content">
                 <h1>Who are we?</h1>
                 <p>We are a team dedicated to creating an enriching learning experience for individuals around the globe. Our mission is to provide accessible and high-quality educational courses that empower learners to enhance their skills and knowledge.</p>

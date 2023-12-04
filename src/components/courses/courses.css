@@ -149,6 +149,7 @@
     .course-card {
         flex-direction: row;
         max-width: none;
+        width: 100%
     }
 }
 @media (max-width: 540px) {

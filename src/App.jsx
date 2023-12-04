@@ -35,10 +35,10 @@ function NavBar(props) {
       </div>
       <nav className={navVisible ? 'visible' : ''}>
         <button className='close-nav critical' onClick={toggleNav}>X</button>
-        <span className={`nav-link ${isLinkActive(config.homePage) ? 'active' : ''}`} onClick={() => navigate(config.homePage)} tabIndex={1}>Home</span>
+        <span className={`nav-link ${isLinkActive(config.homePage) ? 'active' : ''}`} onClick={() => {toggleNav(); navigate(config.homePage)}} tabIndex={1}>Home</span>
         {/* <span className={`nav-link ${isLinkActive(config.aboutPage) ? 'active' : ''}`} onClick={() => navigate(config.aboutPage)} tabIndex={1}>About</span> */}
-        <span className={`nav-link ${isLinkActive(config.coursesPage) ? 'active' : ''}`} onClick={() => navigate(config.coursesPage)} tabIndex={1}>Courses</span>
-        <span className={`nav-link ${isLinkActive(config.profilePage) ? 'active' : ''}`} onClick={() => navigate(config.profilePage)} tabIndex={1}>Profile</span>
+        <span className={`nav-link ${isLinkActive(config.coursesPage) ? 'active' : ''}`} onClick={() => {toggleNav(); navigate(config.coursesPage)}} tabIndex={1}>Courses</span>
+        <span className={`nav-link ${isLinkActive(config.profilePage) ? 'active' : ''}`} onClick={() => {toggleNav(); navigate(config.profilePage)}} tabIndex={1}>Profile</span>
         {/* <span className={`nav-link ${isLinkActive(config.contactPage) ? 'active' : ''}`} onClick={() => navigate(config.contactPage)} tabIndex={1}>Contact</span> */}
       </nav>
       <span className='nav-buttons'>

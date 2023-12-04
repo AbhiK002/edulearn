@@ -105,13 +105,18 @@
 @media (max-width: 1200px) {
     .content .courses-container {
         flex-wrap: wrap;
+        padding: 1rem
+    }
+
+    .section.courses .content {
+        padding: 0.5rem
     }
 }
 
 .course-card {
+    flex: 1;
     cursor: default;
     width: fit-content;
-    min-width: 250px;
     max-width: 280px;
     padding: 1rem;
     gap: 1rem;
@@ -209,7 +214,6 @@
 
 .section.about .about-content {
     flex: 2;
-    min-width: 500px;
     max-width: 700px;
     background-color: rgba(255, 255, 255, 0.6);
     padding: 2rem;
@@ -218,6 +222,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+@media (max-width: 1050px) {
+    .section.about {
+        flex-direction: column;
+    }
+    .section.about .about-content {
+        width: 100%;
+        padding: 0.5rem
+    }
 }
 .section.about .about-content * {
     width: 80%;
