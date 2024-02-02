@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 import config from './config.js'
 import './App.css'
 import Home from './components/home/Home.jsx'
@@ -122,6 +124,7 @@ function App() {
 
   return (
     <div className='app-container'>
+      <ToastContainer />
       <NavBar userDetails={currUser} />
       <main>
         <Routes>

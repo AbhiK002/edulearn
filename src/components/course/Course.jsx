@@ -3,6 +3,7 @@ import './course.css'
 import configs from '../../config'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 function Course({ refreshApp, userDetails, setUserDetails }) {
     const { id } = useParams();
@@ -22,10 +23,12 @@ function Course({ refreshApp, userDetails, setUserDetails }) {
                 setHasPremium(userDetails?.courses_bought?.includes(courseView._id) || userDetails?.role === "admin")
             }
             else {
-                alert("error retrieving course")
+                console.error("error retrieving course")
+                toast.error("Some Error Occurred");
             }
         }).catch(err => {
-            alert("error retrieving course")
+            console.error("error retrieving course")
+            toast.error("Some Error Occurred");
         })
     }, [id])
     useEffect(() => {
@@ -34,11 +37,11 @@ function Course({ refreshApp, userDetails, setUserDetails }) {
 
     function buyCourse() {
         if (!userDetails?._id) {
-            alert("Please log in to buy course");
+            toast.warning("Please log in to buy course");
             navigate(configs.getStartedPage);
             return;
         }
-        if (hasPremium) {alert("You have already bought this course"); return;}
+        if (hasPremium) {toast.info("You have already bought this course"); return;}
 
         // setPayMode(true);
         displayRazor();
@@ -57,16 +60,18 @@ function Course({ refreshApp, userDetails, setUserDetails }) {
             }
         }).then(res => {
             if (res.data?.valid) {
-                alert(res.data?.message);
+                let str = res.data?.message
+                str = str[0].toUpperCase() + str.substring(1)
+                toast.success(str);
                 document.getElementsByClassName("buy-course-button")[0].setAttribute("disabled", "false");
                 setUserDetails({ ...res.data?.data });
             }
             else {
                 document.getElementsByClassName("buy-course-button")[0].setAttribute("disabled", "false");
-                alert("could not buy course");
+                toast.error("Could not buy course");
             }
         }).catch(err => {
-            alert("could not buy course");
+            toast.error("Could not buy course");
             document.getElementsByClassName("buy-course-button")[0].setAttribute("disabled", "false");
         })
     }
@@ -129,14 +134,14 @@ function Course({ refreshApp, userDetails, setUserDetails }) {
 
     function playVideos() {
         const token = localStorage.getItem(configs.tokenKey);
-        if (!hasPremium) alert("You haven't bought this course");
+        if (!hasPremium) toast.warning("You haven't bought this course");
 
         axios.post(configs.getBackendUrl("/get-course-videos"), { course_id: courseView._id }, {
             headers: { Authorization: `Bearer ${token}` }
         }).then(res => {
             if (res.data.valid) {
                 if (res.data.data.length === 0) {
-                    alert("No videos to display");
+                    toast.info("No videos to display");
                 }
                 else {
                     setVideos([...res.data.data]);
@@ -144,10 +149,10 @@ function Course({ refreshApp, userDetails, setUserDetails }) {
                 }
             }
             else {
-                alert("error retrieving video")
+                toast.error("Couldn't retrieve videos")
             }
         }).catch(err => {
-            alert("error retrieving videos")
+            toast.error("Couldn't retrieve videos")
         })
     }
 

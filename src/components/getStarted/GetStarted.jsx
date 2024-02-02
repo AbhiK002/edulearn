@@ -3,6 +3,7 @@ import './getStarted.css'
 import axios from 'axios';
 import configs from '../../config';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 function GetStarted(props) {
     const navigate = useNavigate();
@@ -48,12 +49,12 @@ function GetStarted(props) {
             if (valid) {
                 localStorage.setItem(configs.tokenKey, token);
                 props.setUserDetails(user);
-                alert("Logged in successfully");
+                toast.success("Logged in successfully");
                 navigate(configs.homePage);
             }
         })
         .catch((err) => {
-            alert(err.response ? err.response.data.message : "Some error occurred");
+            toast.error(err.response ? err.response.data.message : "Some error occurred");
         })
     }
     function register() {
@@ -69,11 +70,11 @@ function GetStarted(props) {
                 localStorage.setItem(configs.tokenKey, token);
                 props.setUserDetails(user);
                 navigate(configs.homePage);
-                alert("Registered successfully");
+                toast.success("Registered successfully");
             }
         })
         .catch((err) => {
-            alert(err.response ? err.response.data.message : "Some error occurred");
+            toast.error(err.response ? err.response.data.message : "Some error occurred");
         })
     }
 
@@ -81,23 +82,23 @@ function GetStarted(props) {
         const { fullname, email, password, confirmpass } = loginFormData;
 
         if (!email.trim() || !password.trim() || (!isRegistered && (!fullname.trim() || !confirmpass.trim()) )) {
-            alert('All fields are required.');
+            toast.warning('All fields are required.');
             return false;
         }
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!email.match(emailRegex)) {
-            alert('Please enter a valid email address.');
+            toast.warning('Please enter a valid email address.');
             return false;
         }
 
         if (password.length < 8) {
-            alert('Password must contain at least 8 characters.');
+            toast.warning('Password must contain at least 8 characters.');
             return false;
         }
 
         if (!isRegistered && password !== confirmpass) {
-            alert('Password and Confirm Password must match.');
+            toast.warning('Password and Confirm Password must match.');
             return false;
         }
 

@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 import './home.css'
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 function Home(props) {
     const userDetails = props?.userDetails;
@@ -44,14 +45,14 @@ function Home(props) {
             message: formData.message
         }).then(res => {
             if (res.data?.valid) {
-                alert("Thanks for the high five!");
+                toast("Thanks for the high five!");
                 clearForm();
             }
             else {
-                alert("Some error occurred");
+                toast.error("Some error occurred");
             }
         }).catch(err => {
-            alert("Some error occurred")
+            toast.error("Some error occurred")
         })
     }
 
@@ -59,12 +60,12 @@ function Home(props) {
         const { fullname, email, message } = formData;
 
         if (!fullname.trim() || !email.trim() || !message.trim()) {
-            alert("Please fill all the fields");
+            toast.warning("Please fill all the fields");
             return false;
         }
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!email.match(emailRegex)) {
-            alert('Please enter a valid email address.');
+            toast.warning('Please enter a valid email address.');
             return false;
         }
 

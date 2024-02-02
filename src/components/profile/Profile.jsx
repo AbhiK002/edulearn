@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import configs from '../../config.js';
+import { toast } from 'react-toastify';
 
 function Profile({ currUser, setCurrUser, coursesList }) {
     let isAdmin = false;
@@ -41,14 +42,14 @@ function Profile({ currUser, setCurrUser, coursesList }) {
             }
         }).then(res => {
             if (res.data.valid) {
-                alert("course added");
+                toast.info("course added");
                 refreshPage();
             }
             else {
-                alert("failed to add course")
+                toast.error("failed to add course")
             }
         }).catch(err => {
-            alert("failed to add course")
+            toast.error("failed to add course")
         })
     }
     function editCourse() {
@@ -62,14 +63,14 @@ function Profile({ currUser, setCurrUser, coursesList }) {
             }
         }).then(res => {
             if (res.data.valid) {
-                alert("course edited");
+                toast.success("course edited");
                 refreshPage();
             }
             else {
-                alert("failed to edit course")
+                toast.error("failed to edit course")
             }
         }).catch(err => {
-            alert("failed to edit course")
+            toast.error("failed to edit course")
         })
     }
     let [courseView, setCourseView] = useState(null);
@@ -101,10 +102,10 @@ function Profile({ currUser, setCurrUser, coursesList }) {
                 setUserPayments(res.data.data)
             }
             else {
-                alert("error retrieving payments")
+                toast.error("error retrieving payments")
             }
         }).catch(err => {
-            alert("Error retrieving payments")
+            toast.error("Error retrieving payments")
         })
     }, [currUser])
 
@@ -113,6 +114,7 @@ function Profile({ currUser, setCurrUser, coursesList }) {
             <h1>{currUser.fullname}</h1>
             <h2>{currUser.email}</h2>
             <button className="critical" onClick={() => {
+                toast.success("Logged out successfully")
                 localStorage.removeItem(configs.tokenKey);
                 setCurrUser({});
                 navigate(configs.homePage);
