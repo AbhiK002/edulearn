@@ -1,6 +1,6 @@
 const prefix = ""
 const configs = {
-    getBackendUrl: (suffix) => {return "https://master-forky-api.onrender.com" + suffix},
+    getBackendUrl: (suffix) => {return "https://master-forky.up.railway.app" + suffix},
     sampleUserDetails: {
         _id: "h9h38hd92hn3d92",
         fullname: "Abhineet Kelley",
